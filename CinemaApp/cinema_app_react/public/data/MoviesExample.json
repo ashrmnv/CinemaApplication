@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "Free Guy",
+    "director" : "Shawn Levy",
+    "genre" : "Adventure, Comedy",
+    "rating" : 10
+  },
+  {
+    "id": 2,
+    "title": "The Green Knight",
+    "director" : "Chris Nolan",
+    "genre" : "Adventure, Drama",
+    "rating" : 8
+  },
+  {
+    "id": 3,
+    "title": "No Time to Die",
+    "director" : "Cary Fukunaga",
+    "genre" : "Thriller, Drama, Action",
+    "rating" : 8
+  },
+  {
+    "id": 4,
+    "title": "The Suicide Squad",
+    "director" : "James Gunn",
+    "genre" : "Adventure, Comedy, Action",
+    "rating" : 7
+  },
+  {
+    "id": 5,
+    "title": "Eternals",
+    "director" : "Chloe Zhao",
+    "genre" : "Action, Adventure, Comedy",
+    "rating" : 9
+  },
+  {
+    "id": 6,
+    "title": "Luca",
+    "director" : "Paolo Sorrentino",
+    "genre" : "Comedy, Adventure",
+    "rating" : 9.5
+  },
+  {
+    "id": 7,
+    "title": "Anette",
+    "director" : "Gaspar Noe",
+    "genre" : "Drama",
+    "rating" : 6.7
+  },
+  {
+    "id": 8,
+    "title": "Unclenching the fists",
+    "director" : "Kira Kovalenko",
+    "genre" : "Drama",
+    "rating" : 9
+  }
+]
