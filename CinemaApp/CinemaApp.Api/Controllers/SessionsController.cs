@@ -1,11 +1,12 @@
 ﻿using CinemaApp.BLL.Exceptions;
 using CinemaApp.BLL.Interfaces;
 using CinemaApp.Common.Dtos.SessionDtos;
+using CinemaApp.Common.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CinemaApp.API.Controllers
 {
-    [Route("movies{movieId}/sessions")]
+    [Route("sessions")]
     public class SessionsController : ControllerBase
     {
         private readonly ISessionService _sessionService;
@@ -14,15 +15,22 @@ namespace CinemaApp.API.Controllers
             _sessionService = service; 
         }
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll([FromQuery]SessionFilterOptions filterOptions)
         {
-            var sessionReadDtos = _sessionService.GetSessions();
+            var sessionReadDtos = _sessionService.GetSessions(filterOptions);
 
-            return Ok(sessionReadDtos);
+            if (sessionReadDtos.Count == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(sessionReadDtos);
+            }
         }
 
-        [HttpGet("{sessionId}", Name = "GetById")]
-        public IActionResult GetById(int sessionId)
+        [HttpGet("{sessionId}", Name = "GetSessionById")]
+        public IActionResult GetSessionById(int sessionId)
         {
             var sessionReadDto = _sessionService.GetSessionById(sessionId);
             if (sessionReadDto != null)
@@ -39,7 +47,7 @@ namespace CinemaApp.API.Controllers
         public IActionResult CreateSession([FromBody] SessionCreateDto sessionDto)
         {
             var sessionReadDto = _sessionService.AddSession(sessionDto);
-            return CreatedAtRoute(nameof(GetById), new { Id = sessionReadDto.Id }, sessionReadDto);
+            return CreatedAtRoute(nameof(GetSessionById), new { Id = sessionReadDto.Id }, sessionReadDto);
         }
 
         [HttpPut("{id}")]

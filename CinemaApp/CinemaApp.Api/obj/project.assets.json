@@ -7154,11 +7154,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Api\\CinemaApp.API.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Api\\CinemaApp.API.csproj",
       "projectName": "CinemaApp.API",
-      "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Api\\CinemaApp.API.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Api\\CinemaApp.API.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Api\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7175,11 +7175,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.BLL\\CinemaApp.BLL.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.BLL\\CinemaApp.BLL.csproj"
+            "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.BLL\\CinemaApp.BLL.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.BLL\\CinemaApp.BLL.csproj"
             },
-            "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj"
+            "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj"
             }
           }
         }

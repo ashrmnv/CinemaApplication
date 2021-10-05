@@ -19,6 +19,10 @@ namespace CinemaApp.DAL.Configurations
                 .HasMaxLength(50)
                 .IsRequired();
 
+            builder.Property(m => m.PremiereDate)
+                .HasColumnType("date")
+                .IsRequired();
+
             builder.Property(m => m.Rating)
                 .HasDefaultValue(0);
                 

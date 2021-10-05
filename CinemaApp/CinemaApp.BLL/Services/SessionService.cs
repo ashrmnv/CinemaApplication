@@ -2,6 +2,7 @@
 using CinemaApp.BLL.Exceptions;
 using CinemaApp.BLL.Interfaces;
 using CinemaApp.Common.Dtos.SessionDtos;
+using CinemaApp.Common.Models;
 using CinemaApp.DAL.Interfaces;
 using CinemaApp.Domain;
 using System;
@@ -41,9 +42,22 @@ namespace CinemaApp.BLL.Services
             return sessionReadDto;
         }
 
-        public IList<SessionReadDto> GetSessions()
+        public IList<SessionReadDto> GetSessions(SessionFilterOptions filterOptions)
         {
-            IQueryable<Session> sessions = _repo.GetAll();
+            IQueryable<Session> sessions;
+            if (filterOptions.MovieId.HasValue)
+            {
+                sessions = _repo.FindAll(s => s.MovieId == filterOptions.MovieId.Value);
+            }
+            else
+            {
+                sessions = _repo.GetAll();
+            }
+
+            if (filterOptions.DateTime.HasValue)
+            {
+                sessions = sessions.Where(s => s.DateTime.Date == filterOptions.DateTime.Value.Date);
+            }
             var sessionReadDtos = _mapper.Map<List<SessionReadDto>>(sessions.ToList());
             return sessionReadDtos;
 
@@ -99,7 +113,7 @@ namespace CinemaApp.BLL.Services
                 }
                 else
                 {
-                    throw new MovieNotFoundException("Movie doesn't exists")
+                    throw new MovieNotFoundException("Movie doesn't exists");
                 }
             }    
 

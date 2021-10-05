@@ -1,4 +1,4 @@
-﻿using CinemaApp.BLL.Extensions;
+﻿using CinemaApp.BLL.Exceptions;
 using CinemaApp.BLL.Interfaces;
 using CinemaApp.Common.Dtos.MovieDtos;
 using CinemaApp.Common.Models;
@@ -18,15 +18,21 @@ namespace CinemaApp.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll([FromQuery] FilterOptions filterOptions)
+        public IActionResult GetAll([FromQuery] MovieFilterOptions filterOptions)
         {
             var movieReadDtos = _movieService.GetMovies(filterOptions);
-
-            return Ok(movieReadDtos);
+            if (movieReadDtos.Count == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(movieReadDtos);
+            }
         }
 
-        [HttpGet("{id}", Name = "GetById")]
-        public IActionResult GetById(int id)
+        [HttpGet("{id}", Name = "GetMovieById")]
+        public IActionResult GetMovieById(int id)
         {
             var movieReadDto = _movieService.GetMovieById(id);
             if (movieReadDto != null)
@@ -44,7 +50,7 @@ namespace CinemaApp.API.Controllers
         public IActionResult CreateMovie([FromBody] MovieCreateDto movieDto)
         {
             var movieReadDto = _movieService.AddMovie(movieDto);
-            return CreatedAtRoute(nameof(GetById), new { Id = movieReadDto.Id }, movieReadDto);
+            return CreatedAtRoute(nameof(GetMovieById), new { Id = movieReadDto.Id }, movieReadDto);
         }
 
         [HttpPut("{id}")]

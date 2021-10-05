@@ -26,5 +26,12 @@ namespace CinemaApp.DAL.Repositories
                 .FirstOrDefault(m => m.Id == id);
             return movie;
         }
+
+        public IQueryable<Movie> FindAllWithDirectors(Expression<Func<Movie, bool>> predicate)
+        {
+            return context.Movies
+                .Include(d => d.Director)
+                .Where(predicate);
+        }
     }
 }

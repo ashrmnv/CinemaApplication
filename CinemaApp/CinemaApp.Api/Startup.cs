@@ -31,15 +31,10 @@ namespace CinemaApp.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped(typeof(DAL.Interfaces.Repository<>), typeof(DAL.Repositories.Repository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<ISessionService, SessionService>();
-            //var mapperConfig = new MapperConfiguration(m =>
-            //{
-            //    m.AddProfile(new MoviesProfile());
-            //});
-            //services.AddSingleton(mapperConfig.CreateMapper());
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddDbContext<CinemaAppContext>

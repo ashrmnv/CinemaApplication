@@ -7,7 +7,7 @@ namespace CinemaApp.BLL.Interfaces
 {
     public interface IMovieService
     {
-        IList<ManyMoviesReadDto> GetMovies(FilterOptions filterOptions);
+        IList<ManyMoviesReadDto> GetMovies(MovieFilterOptions filterOptions);
         SingleMovieReadDto GetMovieById(int id);
         ManyMoviesReadDto AddMovie(MovieCreateDto dto);
         ManyMoviesReadDto UpdateMovieDetails(int id, MoviePartialUpdateDto dto);

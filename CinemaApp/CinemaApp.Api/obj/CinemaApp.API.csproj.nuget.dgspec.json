@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Api\\CinemaApp.API.csproj": {}
+    "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Api\\CinemaApp.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Api\\CinemaApp.API.csproj": {
+    "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Api\\CinemaApp.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Api\\CinemaApp.API.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Api\\CinemaApp.API.csproj",
         "projectName": "CinemaApp.API",
-        "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Api\\CinemaApp.API.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Api\\CinemaApp.API.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Api\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.BLL\\CinemaApp.BLL.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.BLL\\CinemaApp.BLL.csproj"
+              "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.BLL\\CinemaApp.BLL.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.BLL\\CinemaApp.BLL.csproj"
               },
-              "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj"
+              "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj"
               }
             }
           }
@@ -92,14 +92,14 @@
         }
       }
     },
-    "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.BLL\\CinemaApp.BLL.csproj": {
+    "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.BLL\\CinemaApp.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.BLL\\CinemaApp.BLL.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.BLL\\CinemaApp.BLL.csproj",
         "projectName": "CinemaApp.BLL",
-        "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.BLL\\CinemaApp.BLL.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.BLL\\CinemaApp.BLL.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.BLL\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -116,14 +116,14 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj"
+              "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj"
               },
-              "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj"
+              "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj"
               },
-              "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj"
+              "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj"
               }
             }
           }
@@ -166,14 +166,14 @@
         }
       }
     },
-    "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj": {
+    "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj",
         "projectName": "CinemaApp.Common",
-        "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Common\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -190,8 +190,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj"
+              "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj"
               }
             }
           }
@@ -230,14 +230,14 @@
         }
       }
     },
-    "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
+    "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
         "projectName": "CinemaApp.DAL",
-        "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.DAL\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -254,8 +254,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj"
+              "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj"
               }
             }
           }
@@ -314,14 +314,14 @@
         }
       }
     },
-    "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj": {
+    "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj",
         "projectName": "CinemaApp.Domain",
-        "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\AMDARIS\\Cinema\\CinemaApp\\CinemaApp.Domain\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

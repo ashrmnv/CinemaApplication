@@ -8,6 +8,7 @@ using CinemaApp.Common.Dtos.MovieDtos;
 using CinemaApp.Common.Models;
 using CinemaApp.DAL.Interfaces;
 using CinemaApp.Domain;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -50,16 +51,21 @@ namespace CinemaApp.BLL.Services
             return movieReadDto;
         }
 
-        public IList<ManyMoviesReadDto> GetMovies(FilterOptions filterOptions)
+        public IList<ManyMoviesReadDto> GetMovies(MovieFilterOptions filterOptions)
         {
             IQueryable<Movie> movies;
-            if (string.IsNullOrWhiteSpace(filterOptions.Genre))
+            switch (filterOptions.Available)
             {
-                movies = _repo.GetAll();
+                case AvailabilityFilter.Soon:
+                    movies = _repo.FindAllWithDirectors(m => m.PremiereDate > DateTime.Now);
+                    break;
+                default:
+                    movies = _repo.FindAllWithDirectors(m => m.PremiereDate <= DateTime.Now);
+                    break;
             }
-            else
-            {
-                movies = _repo.FindAll(m => m.Genre.Contains(filterOptions.Genre));
+            if (!string.IsNullOrWhiteSpace(filterOptions.Genre))
+            { 
+                movies = movies.Where(m => m.Genre.Contains(filterOptions.Genre));
             }
 
             switch (filterOptions.Order)
@@ -71,7 +77,12 @@ namespace CinemaApp.BLL.Services
                     movies = movies.OrderByDescending(e => e.Title);
                     break;
             }
-            var movieReadDtos = _mapper.Map<List<ManyMoviesReadDto>>(movies.ToList());
+            var moviesList = movies.ToList();
+            var movieReadDtos = _mapper.Map<List<ManyMoviesReadDto>>(moviesList);
+            for (int i = 0; i < movieReadDtos.Count; i++)
+            {
+                movieReadDtos[i].DirectorReadDto = _mapper.Map<DirectorReadDto>(moviesList[i].Director);
+            }
             return movieReadDtos;
         }
 

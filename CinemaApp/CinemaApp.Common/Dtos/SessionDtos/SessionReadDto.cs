@@ -8,6 +8,5 @@ namespace CinemaApp.Common.Dtos.SessionDtos
     {
         public int Id { get; set; }
         public DateTime DateTime { get; set; }
-        public ICollection<TicketReadDto> Tickets { get; set; }
     }
 }

@@ -11,6 +11,8 @@ namespace CinemaApp.Common.Dtos.MovieDtos
         public string Description { get; set; }
         [MaxLength(100)]
         public string Genre { get; set; }
+        public DateTime PremiereDate { get; set; }
+
         [Range(0, 10)]
         public double? Rating { get; set; }
         [Range(1, 9999)]

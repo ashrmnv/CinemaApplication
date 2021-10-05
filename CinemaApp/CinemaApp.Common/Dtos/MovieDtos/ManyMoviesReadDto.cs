@@ -1,4 +1,7 @@
 ﻿
+using CinemaApp.Common.Dtos.DirectorDtos;
+using System;
+
 namespace CinemaApp.Common.Dtos.MovieDtos
 {
     public class ManyMoviesReadDto
@@ -7,7 +10,9 @@ namespace CinemaApp.Common.Dtos.MovieDtos
         public string Title { get; set; }
         public string Description { get; set; }
         public string Genre { get; set; }
+        public DateTime PremiereDate { get; set; }
         public double Rating { get; set; }
-        public int DirectorId { get; set; }
+        public DirectorReadDto DirectorReadDto { get; set; }
+
     }
 }

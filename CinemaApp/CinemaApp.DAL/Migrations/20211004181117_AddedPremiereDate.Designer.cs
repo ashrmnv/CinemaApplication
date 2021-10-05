@@ -4,14 +4,16 @@ using CinemaApp.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CinemaApp.DAL.Migrations
 {
     [DbContext(typeof(CinemaAppContext))]
-    partial class CinemaAppContextModelSnapshot : ModelSnapshot
+    [Migration("20211004181117_AddedPremiereDate")]
+    partial class AddedPremiereDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,7 +129,7 @@ namespace CinemaApp.DAL.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("PremiereDate")
-                        .HasColumnType("date");
+                        .HasColumnType("smalldatetime");
 
                     b.Property<double>("Rating")
                         .ValueGeneratedOnAdd()

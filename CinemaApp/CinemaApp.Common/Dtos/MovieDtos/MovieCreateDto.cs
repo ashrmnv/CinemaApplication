@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CinemaApp.Common.Dtos.MovieDtos
 {
@@ -14,6 +15,9 @@ namespace CinemaApp.Common.Dtos.MovieDtos
         [Required]
         [MaxLength(100)]
         public string Genre { get; set; }
+        [Required]
+        public DateTime PremiereDate { get; set; }
+
         [Range(0,10)]
         public double Rating { get; set; }
         [Required]

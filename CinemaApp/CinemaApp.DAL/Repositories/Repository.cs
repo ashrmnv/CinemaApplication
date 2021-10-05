@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace CinemaApp.DAL.Repositories
 {
-    public class Repository<T> : Interfaces.Repository<T> where T : Entity
+    public class Repository<T> : IRepository<T> where T : Entity
     {
         protected CinemaAppContext context;
         public Repository(CinemaAppContext appDbContext)
