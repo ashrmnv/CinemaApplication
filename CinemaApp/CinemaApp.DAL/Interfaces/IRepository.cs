@@ -1,17 +1,19 @@
-﻿using CinemaApp.Domain;
+﻿using CinemaApp.Common.Models;
+using CinemaApp.Domain;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
 
 namespace CinemaApp.DAL.Interfaces
 {
-    public interface IRepository<T> where T : Entity
+    public interface IRepository<TEntity> where TEntity : Entity
     {
-        T GetById(int id);
-        IQueryable<T> FindAll(Expression<Func<T, bool>> predicate);
-        IQueryable<T> GetAll();
-        void Add(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        TEntity GetById(int id);
+        IQueryable<TEntity> FindAll(Expression<Func<TEntity, bool>> predicate);
+        IQueryable<TEntity> GetAll();
+        void Add(TEntity entity);
+        void Update(TEntity entity);
+        void Delete(TEntity entity);
+        PaginatedResult<TEntity> GetPagedData(PagedRequest pagedRequest);
     }
 }

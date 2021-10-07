@@ -166,6 +166,9 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+              "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Common\\CinemaApp.Common.csproj"
+              },
               "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj": {
                 "projectPath": "C:\\Users\\User\\Desktop\\AMDARIS\\CinemaNew\\CinemaApplication\\CinemaApp\\CinemaApp.Domain\\CinemaApp.Domain.csproj"
               }
@@ -182,6 +185,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.10, )"
@@ -205,6 +212,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.10, )"
+            },
+            "System.Linq.Dynamic.Core": {
+              "target": "Package",
+              "version": "[1.2.12, )"
             }
           },
           "imports": [

@@ -1,4 +1,6 @@
-﻿using CinemaApp.DAL.Interfaces;
+﻿using CinemaApp.Common.Models;
+using CinemaApp.DAL.Extensions;
+using CinemaApp.DAL.Interfaces;
 using CinemaApp.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -37,6 +39,11 @@ namespace CinemaApp.DAL.Repositories
         public T GetById(int id)
         {
             return context.Set<T>().Find(id);
+        }
+
+        public PaginatedResult<T> GetPagedData(PagedRequest pagedRequest)
+        {
+            return context.Set<T>().CreatePaginatedResult<T>(pagedRequest);
         }
 
         public void Update(T entity)

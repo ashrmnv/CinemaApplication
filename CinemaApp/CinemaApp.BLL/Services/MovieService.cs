@@ -27,6 +27,7 @@ namespace CinemaApp.BLL.Services
             _directorRepo = directorRepository;
             _mapper = mapper;
         }
+
         public ManyMoviesReadDto AddMovie(MovieCreateDto dto)
         {
             var director = _directorRepo.GetById(dto.DirectorId);
