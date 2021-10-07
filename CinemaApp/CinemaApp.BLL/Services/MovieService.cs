@@ -28,6 +28,13 @@ namespace CinemaApp.BLL.Services
             _mapper = mapper;
         }
 
+        public PaginatedResult<Movie> GetPagedResult(PagedRequest pagedRequest)
+        {
+            var moviesList = _repo.GetPagedData(pagedRequest);
+
+            return moviesList;
+        }
+
         public ManyMoviesReadDto AddMovie(MovieCreateDto dto)
         {
             var director = _directorRepo.GetById(dto.DirectorId);

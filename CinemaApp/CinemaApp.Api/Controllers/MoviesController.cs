@@ -75,5 +75,12 @@ namespace CinemaApp.API.Controllers
 
             return isDeleted ? NoContent() : NotFound();
         }
+
+        [HttpPost("paginated-result")]
+        public IActionResult GetPaginatedMovies(PagedRequest pagedRequest)
+        {
+            var movieReadDto = _movieService.GetPagedResult(pagedRequest);
+            return Ok(movieReadDto);
+        }
     }
 }

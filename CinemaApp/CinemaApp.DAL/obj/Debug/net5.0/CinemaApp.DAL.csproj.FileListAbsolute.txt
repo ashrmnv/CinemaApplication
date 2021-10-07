@@ -34,3 +34,5 @@ C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.DA
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.DAL\obj\Debug\net5.0\ref\CinemaApp.DAL.dll
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.DAL\obj\Debug\net5.0\CinemaApp.DAL.pdb
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.DAL\obj\Debug\net5.0\CinemaApp.DAL.genruntimeconfig.cache
+C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.DAL\bin\Debug\net5.0\CinemaApp.Common.dll
+C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.DAL\bin\Debug\net5.0\CinemaApp.Common.pdb
