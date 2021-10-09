@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CinemaApp.Common.Dtos.MovieDtos;
+using CinemaApp.Common.Models;
 using CinemaApp.Domain;
 
 namespace CinemaApp.BLL.Profiles
@@ -8,8 +9,9 @@ namespace CinemaApp.BLL.Profiles
     {
         public MoviesProfile()
         {
-            CreateMap<Movie, ManyMoviesReadDto>();
-            CreateMap<Movie, SingleMovieReadDto>();
+            CreateMap<Movie, MovieReadDto>();
+            CreateMap<PaginatedResult<Movie>, PaginatedResult<MovieReadDto>>();
+            CreateMap<Movie, MovieDetailsReadDto>();
             CreateMap<MovieCreateDto, Movie>();
             CreateMap<MovieUpdateDto, Movie>();
             CreateMap<MoviePartialUpdateDto, Movie>();

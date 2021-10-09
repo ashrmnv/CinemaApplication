@@ -2,40 +2,41 @@
 using CinemaApp.BLL.Exceptions;
 using CinemaApp.BLL.Interfaces;
 using CinemaApp.Common.Dtos.ActorDtos;
-using CinemaApp.Common.Dtos.CommentDtos;
 using CinemaApp.Common.Dtos.DirectorDtos;
 using CinemaApp.Common.Dtos.MovieDtos;
 using CinemaApp.Common.Models;
 using CinemaApp.DAL.Interfaces;
 using CinemaApp.Domain;
-using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 
 namespace CinemaApp.BLL.Services
 {
     public class MovieService : IMovieService
     {
-        private readonly IMovieRepository _repo;
+        private readonly IRepository<Movie> _repo;
         private readonly IRepository<Director> _directorRepo;
         private readonly IMapper _mapper;
 
-        public MovieService(IMovieRepository repository, IRepository<Director> directorRepository, IMapper mapper)
+        public MovieService(IRepository<Movie> repository, IRepository<Director> directorRepository, IMapper mapper)
         {
             _repo = repository;
             _directorRepo = directorRepository;
             _mapper = mapper;
         }
 
-        public PaginatedResult<Movie> GetPagedResult(PagedRequest pagedRequest)
+        public PaginatedResult<MovieReadDto> GetPagedResult(PagedRequest pagedRequest)
         {
-            var moviesList = _repo.GetPagedData(pagedRequest);
-
-            return moviesList;
+            var moviesList = _repo.GetPagedDataWithInclude(pagedRequest, x=> x.Director);
+            var moviesListDtos = _mapper.Map<PaginatedResult<MovieReadDto>>(moviesList);
+            for (int i = 0; i < moviesListDtos.Items.Count; i++)
+            {
+                moviesListDtos.Items[i].DirectorReadDto = _mapper.Map<DirectorReadDto>(moviesList.Items[i].Director);
+            }
+            return moviesListDtos;
         }
 
-        public ManyMoviesReadDto AddMovie(MovieCreateDto dto)
+        public MovieReadDto AddMovie(MovieCreateDto dto)
         {
             var director = _directorRepo.GetById(dto.DirectorId);
             if (director == null)
@@ -45,51 +46,26 @@ namespace CinemaApp.BLL.Services
 
             _repo.Add(movieModel);
 
-            var movieReadDto = _mapper.Map<ManyMoviesReadDto>(movieModel);
+            var movieReadDto = _mapper.Map<MovieReadDto>(movieModel);
             return movieReadDto;
         }
         
-        public SingleMovieReadDto GetMovieById(int id)
+        public MovieDetailsReadDto GetMovieById(int id)
         {
-            var movieModel = _repo.GetByIdWithInclude(id);
-            var movieReadDto = _mapper.Map<SingleMovieReadDto>(movieModel);
+            var movieModel = _repo.GetById(id, x => x.Director, x => x.Actors);
+            var movieReadDto = _mapper.Map<MovieDetailsReadDto>(movieModel);
             movieReadDto.DirectorReadDto = _mapper.Map<DirectorReadDto>(movieModel.Director);
             movieReadDto.Actors = _mapper.Map<ICollection<ActorReadDto>>(movieModel.Actors);
-            movieReadDto.Comments = _mapper.Map<ICollection<CommentReadDto>>(movieModel.Comments);
             return movieReadDto;
         }
 
-        public IList<ManyMoviesReadDto> GetMovies(MovieFilterOptions filterOptions)
+        public IList<MovieReadDto> GetMovies()
         {
-            IQueryable<Movie> movies;
-            switch (filterOptions.Available)
-            {
-                case AvailabilityFilter.Soon:
-                    movies = _repo.FindAllWithDirectors(m => m.PremiereDate > DateTime.Now);
-                    break;
-                default:
-                    movies = _repo.FindAllWithDirectors(m => m.PremiereDate <= DateTime.Now);
-                    break;
-            }
-            if (!string.IsNullOrWhiteSpace(filterOptions.Genre))
-            { 
-                movies = movies.Where(m => m.Genre.Contains(filterOptions.Genre));
-            }
-
-            switch (filterOptions.Order)
-            {
-                case SortOrder.Ascending:
-                    movies = movies.OrderBy(e => e.Title);
-                    break;
-                case SortOrder.Descending:
-                    movies = movies.OrderByDescending(e => e.Title);
-                    break;
-            }
-            var moviesList = movies.ToList();
-            var movieReadDtos = _mapper.Map<List<ManyMoviesReadDto>>(moviesList);
+            var movies = _repo.GetAll(x=>x.Director).ToList();
+            var movieReadDtos = _mapper.Map<List<MovieReadDto>>(movies);
             for (int i = 0; i < movieReadDtos.Count; i++)
             {
-                movieReadDtos[i].DirectorReadDto = _mapper.Map<DirectorReadDto>(moviesList[i].Director);
+                movieReadDtos[i].DirectorReadDto = _mapper.Map<DirectorReadDto>(movies[i].Director);
             }
             return movieReadDtos;
         }
@@ -108,7 +84,7 @@ namespace CinemaApp.BLL.Services
             }
         }
 
-        public ManyMoviesReadDto UpdateMovie(int id, MovieUpdateDto dto)
+        public MovieReadDto UpdateMovie(int id, MovieUpdateDto dto)
         {
             var director = _directorRepo.GetById(dto.DirectorId);
             if (director == null)
@@ -125,11 +101,11 @@ namespace CinemaApp.BLL.Services
                 throw new MovieNotFoundException("Movie doesn't exists");
             }
 
-            var movieReadDto = _mapper.Map<ManyMoviesReadDto>(movieModel);
+            var movieReadDto = _mapper.Map<MovieReadDto>(movieModel);
             return movieReadDto;
         }
 
-        public ManyMoviesReadDto UpdateMovieDetails(int id, MoviePartialUpdateDto dto)
+        public MovieReadDto UpdateMovieDetails(int id, MoviePartialUpdateDto dto)
         {
             var movieModel = _repo.GetById(id);
             if (movieModel == null)
@@ -159,7 +135,7 @@ namespace CinemaApp.BLL.Services
 
             _repo.Update(movieModel);
 
-            var movieReadDto = _mapper.Map<ManyMoviesReadDto>(movieModel);
+            var movieReadDto = _mapper.Map<MovieReadDto>(movieModel);
             return movieReadDto;
         }
     }

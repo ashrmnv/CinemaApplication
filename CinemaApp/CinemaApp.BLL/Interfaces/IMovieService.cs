@@ -8,12 +8,12 @@ namespace CinemaApp.BLL.Interfaces
 {
     public interface IMovieService
     {
-        IList<ManyMoviesReadDto> GetMovies(MovieFilterOptions filterOptions);
-        PaginatedResult<Movie> GetPagedResult(PagedRequest pagedRequest);
-        SingleMovieReadDto GetMovieById(int id);
-        ManyMoviesReadDto AddMovie(MovieCreateDto dto);
-        ManyMoviesReadDto UpdateMovieDetails(int id, MoviePartialUpdateDto dto);
-        ManyMoviesReadDto UpdateMovie(int id, MovieUpdateDto dto);
+        IList<MovieReadDto> GetMovies();
+        PaginatedResult<MovieReadDto> GetPagedResult(PagedRequest pagedRequest);
+        MovieDetailsReadDto GetMovieById(int id);
+        MovieReadDto AddMovie(MovieCreateDto dto);
+        MovieReadDto UpdateMovieDetails(int id, MoviePartialUpdateDto dto);
+        MovieReadDto UpdateMovie(int id, MovieUpdateDto dto);
         bool RemoveMovie(int id);
     }
 }

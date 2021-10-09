@@ -11,45 +11,63 @@ namespace CinemaApp.DAL.Repositories
 {
     public class Repository<T> : IRepository<T> where T : Entity
     {
-        protected CinemaAppContext context;
+        protected CinemaAppContext _context;
         public Repository(CinemaAppContext appDbContext)
         {
-            context = appDbContext;
+            _context = appDbContext;
         }
         public void Add(T entity)
         {
-            context.Set<T>().Add(entity);
-            context.SaveChanges();
+            _context.Set<T>().Add(entity);
+            _context.SaveChanges();
         }
 
         public void Delete(T entity)
         {
-            context.Set<T>().Remove(entity);
-            context.SaveChanges();
+            _context.Set<T>().Remove(entity);
+            _context.SaveChanges();
         }
         public IQueryable<T> FindAll(Expression<Func<T, bool>> predicate)
         {
-            return context.Set<T>().Where(predicate);
+            return _context.Set<T>().Where(predicate);
         }
-        public IQueryable<T> GetAll()
+        public IQueryable<T> GetAll(params Expression<Func<T, object>>[] includeProperties)
         {
-            return context.Set<T>();
+            var query = IncludeProperties(includeProperties);
+            return query;
         }
 
-        public T GetById(int id)
+        public T GetById(int id, params Expression<Func<T, object>>[] includeProperties)
         {
-            return context.Set<T>().Find(id);
+            var query = IncludeProperties(includeProperties).FirstOrDefault(x => x.Id == id);
+            return query;
         }
 
         public PaginatedResult<T> GetPagedData(PagedRequest pagedRequest)
         {
-            return context.Set<T>().CreatePaginatedResult<T>(pagedRequest);
+            return _context.Set<T>().CreatePaginatedResult<T>(pagedRequest);
+        }
+
+        public PaginatedResult<T> GetPagedDataWithInclude(PagedRequest pagedRequest, params Expression<Func<T, object>>[] includeProperties)
+        {
+            var query = IncludeProperties(includeProperties);
+            return query.CreatePaginatedResult<T>(pagedRequest);
+        }
+
+        private IQueryable<T> IncludeProperties(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> entities = _context.Set<T>();
+            foreach (var includeProperty in includeProperties)
+            {
+                entities = entities.Include(includeProperty);
+            }
+            return entities;
         }
 
         public void Update(T entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
-            context.SaveChanges();
+            _context.Entry(entity).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }

@@ -6,7 +6,7 @@ namespace CinemaApp.BLL.Interfaces
 {
     public interface ISessionService
     {
-        IList<SessionReadDto> GetSessions(SessionFilterOptions filterOptions);
+        PaginatedResult<SessionReadDto> GetSessions(PagedRequest pagedRequest);
         SessionReadDto GetSessionById(int id);
         SessionReadDto AddSession(SessionCreateDto dto);
         SessionReadDto UpdateSessionDetails(int id, SessionPartialUpdateDto dto);

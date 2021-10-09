@@ -18,17 +18,12 @@ namespace CinemaApp.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll([FromQuery] MovieFilterOptions filterOptions)
+        public IActionResult GetAll()
         {
-            var movieReadDtos = _movieService.GetMovies(filterOptions);
-            if (movieReadDtos.Count == 0)
-            {
-                return NotFound();
-            }
-            else
-            {
-                return Ok(movieReadDtos);
-            }
+            var movieReadDtos = _movieService.GetMovies();
+
+            return Ok(movieReadDtos);
+
         }
 
         [HttpGet("{id}", Name = "GetMovieById")]
@@ -65,7 +60,7 @@ namespace CinemaApp.API.Controllers
         [CinemaApiExceptionFilter]
         public IActionResult PartialUpdate(int id, [FromBody] MoviePartialUpdateDto movieDto)
         {
-            var movieReadDto = _movieService.UpdateMovieDetails(id,movieDto);
+            var movieReadDto = _movieService.UpdateMovieDetails(id, movieDto);
             return Ok(movieReadDto);
         }
         [HttpDelete("{id}")]

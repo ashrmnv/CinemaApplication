@@ -4,7 +4,7 @@ using System;
 
 namespace CinemaApp.Common.Dtos.MovieDtos
 {
-    public class ManyMoviesReadDto
+    public class MovieReadDto
     {
         public int Id { get; set; }
         public string Title { get; set; }

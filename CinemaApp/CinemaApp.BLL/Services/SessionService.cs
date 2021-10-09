@@ -42,24 +42,12 @@ namespace CinemaApp.BLL.Services
             return sessionReadDto;
         }
 
-        public IList<SessionReadDto> GetSessions(SessionFilterOptions filterOptions)
+        public PaginatedResult<SessionReadDto> GetSessions(PagedRequest pagedRequest)
         {
-            IQueryable<Session> sessions;
-            if (filterOptions.MovieId.HasValue)
-            {
-                sessions = _repo.FindAll(s => s.MovieId == filterOptions.MovieId.Value);
-            }
-            else
-            {
-                sessions = _repo.GetAll();
-            }
+            var sessionsList = _repo.GetPagedData(pagedRequest);
+            var sessionsListDtos = _mapper.Map<PaginatedResult<SessionReadDto>>(sessionsList);
 
-            if (filterOptions.DateTime.HasValue)
-            {
-                sessions = sessions.Where(s => s.DateTime.Date == filterOptions.DateTime.Value.Date);
-            }
-            var sessionReadDtos = _mapper.Map<List<SessionReadDto>>(sessions.ToList());
-            return sessionReadDtos;
+            return sessionsListDtos;
 
         }
 

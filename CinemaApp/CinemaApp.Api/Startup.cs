@@ -32,7 +32,6 @@ namespace CinemaApp.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<ISessionService, SessionService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

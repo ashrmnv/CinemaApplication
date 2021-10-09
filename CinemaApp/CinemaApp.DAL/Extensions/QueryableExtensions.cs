@@ -5,6 +5,7 @@ using CinemaApp.Domain;
 using System.Linq.Dynamic.Core;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
 
 namespace CinemaApp.DAL.Extensions
 {
@@ -56,7 +57,8 @@ namespace CinemaApp.DAL.Extensions
                 {
                     predicate.Append($" {requestFilters.LogicalOperators} ");
                 }
-                predicate.Append(requestFilters.Filters[i].Path + $".{nameof(string.Contains)}(@{i})");
+                string expression = _expressions[requestFilters.Filters[i].Expression];
+                predicate.Append(requestFilters.Filters[i].Path + expression.Replace("{i}", $"{i}"));
             }
 
             if (requestFilters.Filters.Any())
@@ -68,5 +70,11 @@ namespace CinemaApp.DAL.Extensions
 
             return query;
         }
+
+        private static readonly Dictionary<string, string> _expressions = new Dictionary<string, string>()
+        {
+            { "Equal", "==@{i}" },
+            {"Contains", ".Contains(@{i})" }
+        };
     }
 }

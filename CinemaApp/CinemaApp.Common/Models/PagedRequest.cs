@@ -16,7 +16,7 @@ namespace CinemaApp.Common.Models
 
         public string SortDirection { get; set; }
 
-        public RequestFilters RequestFilters {get; set;}
+        public RequestFilters RequestFilters { get; set;}
 
         public PagedRequest()
         {

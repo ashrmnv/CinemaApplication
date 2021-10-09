@@ -14,25 +14,19 @@ namespace CinemaApp.API.Controllers
         {
             _sessionService = service; 
         }
-        [HttpGet]
-        public IActionResult GetAll([FromQuery]SessionFilterOptions filterOptions)
-        {
-            var sessionReadDtos = _sessionService.GetSessions(filterOptions);
 
-            if (sessionReadDtos.Count == 0)
-            {
-                return NotFound();
-            }
-            else
-            {
-                return Ok(sessionReadDtos);
-            }
+        [HttpPost("paginated-result")]
+        public IActionResult GetAll([FromBody]PagedRequest pagedRequest)
+        {
+            var sessionReadDtos = _sessionService.GetSessions(pagedRequest);
+            
+            return Ok(sessionReadDtos);
         }
 
-        [HttpGet("{sessionId}", Name = "GetSessionById")]
-        public IActionResult GetSessionById(int sessionId)
+        [HttpGet("{id}", Name = "GetSessionById")]
+        public IActionResult GetSessionById(int id)
         {
-            var sessionReadDto = _sessionService.GetSessionById(sessionId);
+            var sessionReadDto = _sessionService.GetSessionById(id);
             if (sessionReadDto != null)
             {
                 return Ok(sessionReadDto);

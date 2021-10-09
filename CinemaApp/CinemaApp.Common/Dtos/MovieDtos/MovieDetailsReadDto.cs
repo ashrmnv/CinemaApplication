@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace CinemaApp.Common.Dtos.MovieDtos
 {
-    public class SingleMovieReadDto
+    public class MovieDetailsReadDto
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -18,7 +18,6 @@ namespace CinemaApp.Common.Dtos.MovieDtos
         public double Rating { get; set; }
         public DirectorReadDto DirectorReadDto { get; set; }
         public ICollection<ActorReadDto> Actors { get; set; }
-        public ICollection<CommentReadDto> Comments { get; set; }
 
     }
 }
