@@ -1,18 +1,22 @@
-import React from 'react';
+import React,{FC} from 'react';
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import MovieRating from "./MovieRating";
+import { Movie } from '../../api/movies/movie';
 
-const MovieContent = (info) => {
+interface MovieProps{
+    movie : Movie;
+}
+const MovieContent : FC<MovieProps> = ({movie}) : JSX.Element => {
     return (
         <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-                {info.id}. {info.title}
+                {movie.id}. {movie.title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-                {info.director}, {info.genre}
+                {movie.director}, {movie.genre}
             </Typography>
-            <MovieRating rating={info.rating}/>
+            <MovieRating rating={movie.rating}/>
         </CardContent>
     );
 };

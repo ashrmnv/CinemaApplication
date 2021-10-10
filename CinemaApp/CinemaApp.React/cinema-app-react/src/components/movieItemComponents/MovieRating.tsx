@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
+import React, {FC} from 'react'; 
+import {useState} from 'react';
 import {Popover, Rating} from "@mui/material";
 import Typography from "@mui/material/Typography";
-
-const MovieRating = ({rating}) => {
+interface RatingProps{
+    rating : number;
+}
+const MovieRating : FC<RatingProps> = ({rating}) : JSX.Element => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 

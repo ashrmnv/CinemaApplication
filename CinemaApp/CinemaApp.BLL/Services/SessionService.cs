@@ -18,6 +18,7 @@ namespace CinemaApp.BLL.Services
         private readonly IRepository<Session> _repo;
         private readonly IRepository<Movie> _movieRepo;
         private readonly IMapper _mapper;
+        
         public SessionService(IRepository<Session> repository, IRepository<Movie> movieRepo, IMapper mapper)
         {
             _repo = repository;

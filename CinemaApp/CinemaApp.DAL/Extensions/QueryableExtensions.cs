@@ -32,6 +32,7 @@ namespace CinemaApp.DAL.Extensions
                 Total = total
             };
         }
+
         private static IQueryable<T> Paginate<T>(this IQueryable<T> query, PagedRequest pagedRequest)
         {
             var entities = query.Skip(pagedRequest.PageIndex * pagedRequest.PageSize).Take(pagedRequest.PageSize);
@@ -70,6 +71,7 @@ namespace CinemaApp.DAL.Extensions
 
             return query;
         }
+
 
         private static readonly Dictionary<string, string> _expressions = new Dictionary<string, string>()
         {

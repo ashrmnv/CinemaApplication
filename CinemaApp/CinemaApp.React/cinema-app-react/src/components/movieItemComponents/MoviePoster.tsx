@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {FC} from 'react';
 import CardMedia from "@mui/material/CardMedia";
 
-const MoviePoster = ({id}) =>{
+interface PosterProps{
+    id : number;
+}
+const MoviePoster : FC<PosterProps> = ({id}) : JSX.Element =>{
     return (
         <CardMedia
             component="img"

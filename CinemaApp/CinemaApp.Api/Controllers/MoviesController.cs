@@ -12,6 +12,7 @@ namespace CinemaApp.API.Controllers
     public class MoviesController : ControllerBase
     {
         private readonly IMovieService _movieService;
+
         public MoviesController(IMovieService movieService)
         {
             _movieService = movieService;
@@ -63,6 +64,7 @@ namespace CinemaApp.API.Controllers
             var movieReadDto = _movieService.UpdateMovieDetails(id, movieDto);
             return Ok(movieReadDto);
         }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

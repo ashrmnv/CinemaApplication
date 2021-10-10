@@ -12,10 +12,12 @@ namespace CinemaApp.DAL.Repositories
     public class Repository<T> : IRepository<T> where T : Entity
     {
         protected CinemaAppContext _context;
+
         public Repository(CinemaAppContext appDbContext)
         {
             _context = appDbContext;
         }
+
         public void Add(T entity)
         {
             _context.Set<T>().Add(entity);
@@ -27,10 +29,12 @@ namespace CinemaApp.DAL.Repositories
             _context.Set<T>().Remove(entity);
             _context.SaveChanges();
         }
+
         public IQueryable<T> FindAll(Expression<Func<T, bool>> predicate)
         {
             return _context.Set<T>().Where(predicate);
         }
+
         public IQueryable<T> GetAll(params Expression<Func<T, object>>[] includeProperties)
         {
             var query = IncludeProperties(includeProperties);

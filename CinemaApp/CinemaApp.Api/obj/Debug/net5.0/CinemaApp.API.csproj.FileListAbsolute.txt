@@ -157,3 +157,4 @@ C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Ap
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\obj\Debug\net5.0\CinemaApp.API.pdb
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\obj\Debug\net5.0\CinemaApp.API.genruntimeconfig.cache
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\bin\Debug\net5.0\System.Linq.Dynamic.Core.dll
+C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

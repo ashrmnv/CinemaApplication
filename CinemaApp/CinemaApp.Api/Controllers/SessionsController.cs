@@ -10,6 +10,7 @@ namespace CinemaApp.API.Controllers
     public class SessionsController : ControllerBase
     {
         private readonly ISessionService _sessionService;
+
         public SessionsController(ISessionService service)
         {
             _sessionService = service; 
@@ -59,6 +60,7 @@ namespace CinemaApp.API.Controllers
             var sessionReadDto = _sessionService.UpdateSessionDetails(id, sessionDto);
             return Ok(sessionReadDto);
         }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
