@@ -8,20 +8,27 @@ namespace CinemaApp.DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.Property(u => u.FirstName)
-                .HasMaxLength(100)
-                .IsRequired();
+            builder.HasIndex(u => u.Login).IsUnique();
 
-            builder.Property(u => u.LastName)
-                .HasMaxLength(100)
+            builder.HasIndex(u => u.Email).IsUnique();
+
+            builder.Property(u => u.Name)
+                .HasMaxLength(255)
                 .IsRequired();
 
             builder.Property(u => u.Login)
-                .HasMaxLength(50)
+                .HasMaxLength(100)
+                .IsRequired();
+
+            builder.Property(u => u.Email)
+                .HasMaxLength(100)
                 .IsRequired();
 
             builder.Property(u => u.Password)
                 .IsRequired();
+
+            builder.Property(u => u.Role)
+                .HasDefaultValue("user");
         }
     }
 }

@@ -73,5 +73,10 @@ namespace CinemaApp.DAL.Repositories
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
         }
+
+        public T FirstOrDefault(Expression<Func<T, bool>> predicate)
+        {
+            return _context.Set<T>().FirstOrDefault(predicate);
+        }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CinemaApp.API.Controllers
 {
-    [Route("sessions")]
+    [Route("api/sessions")]
     public class SessionsController : ControllerBase
     {
         private readonly ISessionService _sessionService;

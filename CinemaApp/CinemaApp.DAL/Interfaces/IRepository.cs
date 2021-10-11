@@ -10,6 +10,7 @@ namespace CinemaApp.DAL.Interfaces
     {
         TEntity GetById(int id, params Expression<Func<TEntity, object>>[] includeProperties);
         IQueryable<TEntity> FindAll(Expression<Func<TEntity, bool>> predicate);
+        TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate);
         IQueryable<TEntity> GetAll(params Expression<Func<TEntity, object>>[] includeProperties);
         void Add(TEntity entity);
         void Update(TEntity entity);

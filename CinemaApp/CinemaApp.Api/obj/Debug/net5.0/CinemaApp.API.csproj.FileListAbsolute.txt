@@ -145,7 +145,6 @@ C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Ap
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\obj\Debug\net5.0\CinemaApp.API.AssemblyInfoInputs.cache
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\obj\Debug\net5.0\CinemaApp.API.AssemblyInfo.cs
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\obj\Debug\net5.0\CinemaApp.API.csproj.CoreCompileInputs.cache
-C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\obj\Debug\net5.0\CinemaApp.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\obj\Debug\net5.0\CinemaApp.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\obj\Debug\net5.0\staticwebassets\CinemaApp.API.StaticWebAssets.Manifest.cache
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\obj\Debug\net5.0\staticwebassets\CinemaApp.API.StaticWebAssets.xml
@@ -158,3 +157,5 @@ C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Ap
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\obj\Debug\net5.0\CinemaApp.API.genruntimeconfig.cache
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\bin\Debug\net5.0\System.Linq.Dynamic.Core.dll
 C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\bin\Debug\net5.0\BCrypt.Net-Next.dll
+C:\Users\User\Desktop\AMDARIS\CinemaNew\CinemaApplication\CinemaApp\CinemaApp.Api\obj\Debug\net5.0\CinemaApp.API.MvcApplicationPartsAssemblyInfo.cs

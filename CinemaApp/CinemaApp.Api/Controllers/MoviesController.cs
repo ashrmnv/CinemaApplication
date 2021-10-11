@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CinemaApp.API.Controllers
 {
-    [Route("movies")]
+    [Route("api/movies")]
     [ApiController]
     public class MoviesController : ControllerBase
     {
