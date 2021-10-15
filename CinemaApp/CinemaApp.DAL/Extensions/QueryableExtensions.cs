@@ -73,10 +73,12 @@ namespace CinemaApp.DAL.Extensions
         }
 
 
-        private static readonly Dictionary<string, string> _expressions = new Dictionary<string, string>()
+        private static readonly Dictionary<Expression, string> _expressions = new Dictionary<Expression, string>()
         {
-            { "Equal", "==@{i}" },
-            {"Contains", ".Contains(@{i})" }
+            { Expression.Equals, "==@{i}" },
+            { Expression.Contains, ".Contains(@{i})" },
+            { Expression.LessOrEqual, "<=@{i}" },
+            { Expression.More, ">@{i}" }
         };
     }
 }

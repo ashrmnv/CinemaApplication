@@ -26,7 +26,16 @@ namespace CinemaApp.API.Controllers
         {
             userDto.Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
             _userService.CreateUser(userDto);
-            return Ok();
+            var user = _userService.GetByEmail(userDto.Email);
+            var jwt = _jwtService.Generate(user.Login, user.Role);
+
+            var response = new
+            {
+                accessToken = jwt,
+                id = user.Id,
+                login = user.Login
+            };
+            return Ok(response);
         }
 
         [HttpPost("login")]
@@ -42,8 +51,8 @@ namespace CinemaApp.API.Controllers
             var response = new
             {
                 accessToken = jwt,
-                login = user.Login,
-                role = user.Role
+                id = user.Id,
+                login = user.Login
             };
 
 

@@ -1,22 +1,28 @@
+import {useState, useContext} from 'react';
 import MovieList from "./pages/MovieList";
+import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
-import MovieDetails from "./pages/MovieDetails";
+import MovieDetailsPage from "./pages/MovieDetails";
 
-function App() {
-  return (
-      <BrowserRouter>
-          <Navbar/>
-          <Switch>
-              <Route exact path="/movies">
-                  <MovieList/>
-              </Route>
-              <Route exact path="/movies/:id">
-                  <MovieDetails/>
-              </Route>
-              <Redirect to='/movies'/>
-          </Switch>
-      </BrowserRouter>
+function App(){
+    const userAuth = useContext();
+    return (
+        <BrowserRouter>
+            <Navbar/>
+            <Switch>
+                <Route exact path="/login">
+                    <Login/>
+                </Route>
+                <Route exact path="/movies">
+                    <MovieList/>
+                </Route>
+                <Route exact path="/movies/:id">
+                    <MovieDetailsPage/>
+                </Route>
+                <Redirect to='/login'/>
+            </Switch>
+        </BrowserRouter>
   )
   ;
 }

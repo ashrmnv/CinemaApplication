@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CinemaApp.Common.Dtos.CommentDtos;
+using CinemaApp.Common.Models;
 using CinemaApp.Domain;
 
 namespace CinemaApp.BLL.Profiles
@@ -9,6 +10,10 @@ namespace CinemaApp.BLL.Profiles
         public CommentProfile()
         {
             CreateMap<Comment, CommentReadDto>();
+            CreateMap<CommentCreateDto, Comment>();
+            CreateMap<CommentUpdateDto, CommentReadDto>();
+            CreateMap<PaginatedResult<Comment>, PaginatedResult<CommentReadDto>>();
+
         }
     }
 }

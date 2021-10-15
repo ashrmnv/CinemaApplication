@@ -15,6 +15,7 @@ namespace CinemaApp.BLL.Profiles
             CreateMap<MovieCreateDto, Movie>();
             CreateMap<MovieUpdateDto, Movie>();
             CreateMap<MoviePartialUpdateDto, Movie>();
+            CreateMap<MovieRatingDto, RatedMovies>();
         }
     }
 }

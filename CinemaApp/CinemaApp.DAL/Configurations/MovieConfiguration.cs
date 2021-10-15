@@ -23,9 +23,12 @@ namespace CinemaApp.DAL.Configurations
                 .HasColumnType("date")
                 .IsRequired();
 
-            builder.Property(m => m.Rating)
+            builder.Property(m => m.RatingsNumber)
                 .HasDefaultValue(0);
-                
+
+            builder.Property(m => m.RatingsSum)
+                .HasDefaultValue(0);
+
             builder.HasOne(m => m.Poster)
                 .WithOne(p => p.Movie)
                 .HasForeignKey<Poster>(p => p.Id);
@@ -34,16 +37,19 @@ namespace CinemaApp.DAL.Configurations
                 .WithOne(s => s.Movie)
                 .OnDelete(DeleteBehavior.SetNull);
 
-            builder.HasMany(m => m.Actors)
-                .WithMany(a => a.Movies)
-                .UsingEntity(x => x.ToTable("ActorsInMovies"));
-
             builder.HasMany(m => m.Comments)
                 .WithOne(c => c.Movie);
 
             builder.HasOne(m => m.Director)
                 .WithMany(d => d.Movies);
 
+            builder.HasMany(m => m.Actors)
+                .WithMany(a => a.Movies)
+                .UsingEntity(x => x.ToTable("ActorsInMovies"));
+
+            builder.HasMany(m => m.WaitingUsers)
+                .WithMany(u => u.ExpectedMovies)
+                .UsingEntity(x => x.ToTable("MovieWaitingList"));
         }
     }
 }

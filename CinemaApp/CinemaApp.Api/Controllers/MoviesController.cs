@@ -2,6 +2,7 @@
 using CinemaApp.BLL.Interfaces;
 using CinemaApp.Common.Dtos.MovieDtos;
 using CinemaApp.Common.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -43,6 +44,7 @@ namespace CinemaApp.API.Controllers
 
         [HttpPost]
         [CinemaApiExceptionFilter]
+        [Authorize(Roles = "admin")]
         public IActionResult CreateMovie([FromBody] MovieCreateDto movieDto)
         {
             var movieReadDto = _movieService.AddMovie(movieDto);
@@ -51,6 +53,7 @@ namespace CinemaApp.API.Controllers
 
         [HttpPut("{id}")]
         [CinemaApiExceptionFilter]
+        [Authorize(Roles = "admin")]
         public IActionResult UpdateMovie(int id, [FromBody] MovieUpdateDto movieDto)
         {
             var movieReadDto = _movieService.UpdateMovie(id, movieDto);
@@ -59,6 +62,7 @@ namespace CinemaApp.API.Controllers
 
         [HttpPatch("{id}")]
         [CinemaApiExceptionFilter]
+        [Authorize(Roles = "admin")]
         public IActionResult PartialUpdate(int id, [FromBody] MoviePartialUpdateDto movieDto)
         {
             var movieReadDto = _movieService.UpdateMovieDetails(id, movieDto);
@@ -66,6 +70,7 @@ namespace CinemaApp.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
             var isDeleted = _movieService.RemoveMovie(id);
@@ -78,6 +83,32 @@ namespace CinemaApp.API.Controllers
         {
             var movieReadDto = _movieService.GetPagedResult(pagedRequest);
             return Ok(movieReadDto);
+        }
+
+        [HttpPost("add-in-waiting-list")]
+        [Authorize]
+        [CinemaApiExceptionFilter]
+        public IActionResult AddInWaitingList([FromBody] MovieInWaitingListDto movieInList)
+        {
+            _movieService.AddMovieInWaitingList(movieInList.UserId, movieInList.MovieId);
+            return Ok();
+        }
+
+        [HttpGet("get-waiting-list/{userId}")]
+        [Authorize]
+        [CinemaApiExceptionFilter]
+        public IActionResult GetWaitingList(int userId)
+        {
+            var movieReadDtos = _movieService.GetMoviesInWaitingList(userId);
+            return Ok(movieReadDtos);
+        }
+        [HttpPost("set-movie-rating")]
+        [Authorize]
+        [CinemaApiExceptionFilter]
+        public IActionResult SetMovieRating([FromBody] MovieRatingDto movieRatingDto)
+        {
+            _movieService.SetMovieRating(movieRatingDto);
+            return NoContent();
         }
     }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import {TextField} from "@mui/material";
 import {useForm} from 'react-hook-form';
 import MovieListHeader from "./movieListComponents/MovieListHeader";
-import { Movie } from '../api/movies/movie';
+import { Movie } from '../entities/movies/movie';
 
 const AddMovieForm = () => {
     const {register, handleSubmit} = useForm();

@@ -14,5 +14,7 @@ namespace CinemaApp.Domain
         public string Role { get; set; }
         public virtual ICollection<Ticket> Tickets { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<RatedMovies> RatedMoviesList { get; set; }
+        public virtual ICollection<Movie> ExpectedMovies { get; set; }
     }
 }

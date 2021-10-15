@@ -10,6 +10,7 @@ namespace CinemaApp.BLL.Profiles
         public TicketProfile()
         {
             CreateMap<Ticket, TicketReadDto>();
+            CreateMap<TicketCreateDto, Ticket>();
         }
     }
 }

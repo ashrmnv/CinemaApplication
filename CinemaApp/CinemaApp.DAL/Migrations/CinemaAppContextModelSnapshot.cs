@@ -129,7 +129,12 @@ namespace CinemaApp.DAL.Migrations
                     b.Property<DateTime>("PremiereDate")
                         .HasColumnType("date");
 
-                    b.Property<double>("Rating")
+                    b.Property<int>("RatingsNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
+                    b.Property<double>("RatingsSum")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("float")
                         .HasDefaultValue(0.0);
@@ -159,6 +164,24 @@ namespace CinemaApp.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Posters");
+                });
+
+            modelBuilder.Entity("CinemaApp.Domain.RatedMovies", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "MovieId");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("RatedMovies");
                 });
 
             modelBuilder.Entity("CinemaApp.Domain.Session", b =>
@@ -254,6 +277,21 @@ namespace CinemaApp.DAL.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("MovieUser", b =>
+                {
+                    b.Property<int>("ExpectedMoviesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WaitingUsersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ExpectedMoviesId", "WaitingUsersId");
+
+                    b.HasIndex("WaitingUsersId");
+
+                    b.ToTable("MovieWaitingList");
+                });
+
             modelBuilder.Entity("ActorMovie", b =>
                 {
                     b.HasOne("CinemaApp.Domain.Actor", null)
@@ -310,6 +348,25 @@ namespace CinemaApp.DAL.Migrations
                     b.Navigation("Movie");
                 });
 
+            modelBuilder.Entity("CinemaApp.Domain.RatedMovies", b =>
+                {
+                    b.HasOne("CinemaApp.Domain.Movie", "Movie")
+                        .WithMany("RatedMoviesList")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CinemaApp.Domain.User", "User")
+                        .WithMany("RatedMoviesList")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("CinemaApp.Domain.Session", b =>
                 {
                     b.HasOne("CinemaApp.Domain.Movie", "Movie")
@@ -339,6 +396,21 @@ namespace CinemaApp.DAL.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("MovieUser", b =>
+                {
+                    b.HasOne("CinemaApp.Domain.Movie", null)
+                        .WithMany()
+                        .HasForeignKey("ExpectedMoviesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CinemaApp.Domain.User", null)
+                        .WithMany()
+                        .HasForeignKey("WaitingUsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("CinemaApp.Domain.Director", b =>
                 {
                     b.Navigation("Movies");
@@ -349,6 +421,8 @@ namespace CinemaApp.DAL.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("Poster");
+
+                    b.Navigation("RatedMoviesList");
 
                     b.Navigation("Sessions");
                 });
@@ -361,6 +435,8 @@ namespace CinemaApp.DAL.Migrations
             modelBuilder.Entity("CinemaApp.Domain.User", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("RatedMoviesList");
 
                     b.Navigation("Tickets");
                 });

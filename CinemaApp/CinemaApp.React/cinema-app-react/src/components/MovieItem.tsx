@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import MoviePoster from "./movieItemComponents/MoviePoster";
 import MovieContent from "./movieItemComponents/MovieContent";
 import MovieButtons from "./movieItemComponents/MovieButtons";
-import { Movie } from '../api/movies/movie';
+import { Movie } from '../entities/movies/movie';
 
 interface MovieProps{
     movie : Movie;

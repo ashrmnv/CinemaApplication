@@ -2,6 +2,7 @@
 using CinemaApp.BLL.Interfaces;
 using CinemaApp.Common.Dtos.SessionDtos;
 using CinemaApp.Common.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CinemaApp.API.Controllers
@@ -39,6 +40,8 @@ namespace CinemaApp.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
+
         public IActionResult CreateSession([FromBody] SessionCreateDto sessionDto)
         {
             var sessionReadDto = _sessionService.AddSession(sessionDto);
@@ -46,7 +49,7 @@ namespace CinemaApp.API.Controllers
         }
 
         [HttpPut("{id}")]
-        [CinemaApiExceptionFilter]
+        [Authorize(Roles = "admin")]
         public IActionResult UpdateSession(int id, [FromBody] SessionUpdateDto sessionDto)
         {
             var sessionReadDto = _sessionService.UpdateSession(id, sessionDto);
@@ -54,7 +57,7 @@ namespace CinemaApp.API.Controllers
         }
 
         [HttpPatch("{id}")]
-        [CinemaApiExceptionFilter]
+        [Authorize(Roles = "admin")]
         public IActionResult PartialUpdate(int id, [FromBody] SessionPartialUpdateDto sessionDto)
         {
             var sessionReadDto = _sessionService.UpdateSessionDetails(id, sessionDto);
@@ -62,6 +65,7 @@ namespace CinemaApp.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
             var isDeleted = _sessionService.RemoveSession(id);

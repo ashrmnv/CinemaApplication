@@ -34,7 +34,7 @@ namespace CinemaApp.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddCors();
+            services.AddCors();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -56,6 +56,9 @@ namespace CinemaApp.Api
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<ISessionService, SessionService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<ITicketService, TicketService>();
+
             services.AddScoped<JwtService>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -83,12 +86,12 @@ namespace CinemaApp.Api
 
             app.UseRouting();
 
-            //app.UseCors(options => options
-            //    .WithOrigins("http://localhost:3000")
-            //    .AllowAnyHeader()
-            //    .AllowAnyMethod()
-            //    .AllowCredentials()
-            //);
+            app.UseCors(options => options
+                .WithOrigins("http://localhost:3000")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials()
+            );
 
             app.UseAuthentication();
             app.UseAuthorization();

@@ -24,7 +24,7 @@ namespace CinemaApp.BLL.Services
 
         public UserDto GetByEmail(string email)
         {
-            var user = _repository.FirstOrDefault(u => u.Email == email);
+            var user = _repository.Find(u => u.Email == email);
             var userDto = _mapper.Map<UserDto>(user);
             return userDto;
         }

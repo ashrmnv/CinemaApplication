@@ -6,5 +6,5 @@ export interface Movie{
     genre : string;
     premierDate : Date;
     rating : number;
-    director : Director;
+    directorReadDto : Director;
 }

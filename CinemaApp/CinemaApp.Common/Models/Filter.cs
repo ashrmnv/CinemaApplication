@@ -6,6 +6,6 @@ namespace CinemaApp.Common.Models
     {
         public string Path { get; set; }
         public string Value { get; set; }
-        public string Expression { get; set; } 
+        public Expression Expression{ get; set; } 
     }
 }

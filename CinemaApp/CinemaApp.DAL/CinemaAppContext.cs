@@ -19,6 +19,8 @@ namespace CinemaApp.DAL
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Director> Directors { get; set; }
+        public DbSet<RatedMovies> RatedMovies { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,6 +32,7 @@ namespace CinemaApp.DAL
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new TicketConfiguration());
             modelBuilder.ApplyConfiguration(new DirectorConfiguration());
+            modelBuilder.ApplyConfiguration(new RatedMoviesConfiguration());
         }
     }
 }

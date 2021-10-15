@@ -8,36 +8,30 @@ import AddMovieIcon from "../components/movieListComponents/AddMovieIcon";
 import Box from "@mui/material/Box";
 import MovieListHeader from "../components/movieListComponents/MovieListHeader";
 import AddMovieForm from "../components/AddMovieForm";
-import {Movie} from "../api/movies/movie";
+import {Movie} from "../entities/movies/movie";
+import {getMovies} from "../services/MovieService";
+
 
 const MovieList : FC = () : JSX.Element =>{
     const [movies, setMovies] = useState<Movie[]>([]);
-    const [isLoaded, setIsLoaded] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(true);
     const [error, setError] = useState<Error>();
+    const token : string = "";
 
-    const getData = () => {
-        fetch('./data/MoviesExample.json', {
-            headers: {
-                'Content-Type' : 'application/json',
-                'Accept' : 'application/json'
-            }
-        })
-            .then(response => response.json())
-            .then((result) => {
-                    setIsLoaded(true);
-                    setMovies(result);
-                },
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                })
+    const getData = async () => {
+        const responseData = await getMovies(token);
+        setMovies(responseData);
     }
 
-    useEffect( getData , []);
+    useEffect(() => {
+        
+        getData();
+    }, []);
 
     if (error) {
         return <div>Ошибка: {error.message}</div>;
     } else if (!isLoaded) {
+        console.log(movies);
         return(
             <Box sx={{ display: 'flex' , flexDirection: 'column', alignItems: 'center', mt:20 }}>
                 <CircularProgress />

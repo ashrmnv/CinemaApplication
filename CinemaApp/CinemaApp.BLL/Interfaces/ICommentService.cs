@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CinemaApp.Common.Dtos.CommentDtos;
+using CinemaApp.Common.Models;
 
 namespace CinemaApp.BLL.Interfaces
 {
-    interface ICommentService
+    public interface ICommentService
     {
+        PaginatedResult<CommentReadDto> GetPagedResult(PagedRequest pagedRequest);
+        CommentReadDto CreateComment(CommentCreateDto commentDto);
+        CommentReadDto UpdateComment(int id, CommentUpdateDto commentDto);
+        bool DeleteComment(int id);
     }
 }

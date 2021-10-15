@@ -7,6 +7,7 @@ using CinemaApp.Common.Dtos.MovieDtos;
 using CinemaApp.Common.Models;
 using CinemaApp.DAL.Interfaces;
 using CinemaApp.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,12 +17,14 @@ namespace CinemaApp.BLL.Services
     {
         private readonly IRepository<Movie> _repo;
         private readonly IRepository<Director> _directorRepo;
+        private readonly IRepository<User> _userRepo;
         private readonly IMapper _mapper;
 
-        public MovieService(IRepository<Movie> repository, IRepository<Director> directorRepository, IMapper mapper)
+        public MovieService(IRepository<Movie> repository, IRepository<Director> directorRepository, IRepository<User> userRepo, IMapper mapper)
         {
             _repo = repository;
             _directorRepo = directorRepository;
+            _userRepo = userRepo;
             _mapper = mapper;
         }
 
@@ -130,13 +133,75 @@ namespace CinemaApp.BLL.Services
             if (!string.IsNullOrWhiteSpace(dto.Genre))
                 movieModel.Genre = dto.Genre;
 
-            if (dto.Rating.HasValue)
-                movieModel.Rating = dto.Rating.Value;
-
             _repo.Update(movieModel);
 
             var movieReadDto = _mapper.Map<MovieReadDto>(movieModel);
             return movieReadDto;
+        }
+
+        public IList<MovieReadDto> GetMoviesInWaitingList(int userId)
+        {
+            var user = _userRepo.GetById(userId);
+            if (user == null)
+            {
+                throw new Exception("User doesn't exists");
+            }
+            var moviesList = _repo.GetAll(m => m.WaitingUsers).Where(m => m.WaitingUsers.Where(u => u.Id == userId).Count() != 0).ToList();
+            var movieReadDtos = _mapper.Map<List<MovieReadDto>>(moviesList);
+            for (int i = 0; i < movieReadDtos.Count; i++)
+            {
+                movieReadDtos[i].DirectorReadDto = _mapper.Map<DirectorReadDto>(moviesList[i].Director);
+            }
+            return movieReadDtos;
+        }
+
+        public void AddMovieInWaitingList(int userId, int movieId)
+        {
+            var movie = _repo.GetById(movieId, m => m.WaitingUsers);
+            if (movie == null)
+            {
+                throw new MovieNotFoundException("Movie doesn't exists");
+            }
+            
+            var user = _userRepo.GetById(userId, u => u.ExpectedMovies);
+            if (user == null)
+            {
+                throw new Exception("User doesn't exists");
+            }
+            user.ExpectedMovies.Add(movie);
+            movie.WaitingUsers.Add(user);
+            _repo.Update(movie);
+            _userRepo.Update(user);
+        }
+
+        public void SetMovieRating(MovieRatingDto movieRatingDto)
+        {
+            var movie = _repo.GetById(movieRatingDto.MovieId, m => m.RatedMoviesList);
+            if (movie == null)
+            {
+                throw new MovieNotFoundException("Movie doesn't exists");
+            }
+
+            var user = _userRepo.GetById(movieRatingDto.UserId, u => u.RatedMoviesList);
+            if (user == null)
+            {
+                throw new Exception("User doesn't exists");
+            }
+            var mappedMovieRating = _mapper.Map<RatedMovies>(movieRatingDto);
+            var check = movie.RatedMoviesList.FirstOrDefault(x => x.UserId == mappedMovieRating.UserId);
+            if (check == null)
+            {
+                movie.RatedMoviesList.Add(mappedMovieRating);
+                movie.RatingsNumber += 1;
+                movie.RatingsSum += mappedMovieRating.Rating;
+                _repo.Update(movie);
+            }
+            if (check != null)
+            {
+                movie.RatingsSum += (mappedMovieRating.Rating - check.Rating);
+                check.Rating = mappedMovieRating.Rating;
+                _repo.Update(movie);
+            }
         }
     }
 }
