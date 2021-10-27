@@ -43,8 +43,7 @@ namespace CinemaApp.API.Controllers
         }
 
         [HttpPost]
-        [CinemaApiExceptionFilter]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public IActionResult CreateMovie([FromBody] MovieCreateDto movieDto)
         {
             var movieReadDto = _movieService.AddMovie(movieDto);
@@ -52,7 +51,6 @@ namespace CinemaApp.API.Controllers
         }
 
         [HttpPut("{id}")]
-        [CinemaApiExceptionFilter]
         [Authorize(Roles = "admin")]
         public IActionResult UpdateMovie(int id, [FromBody] MovieUpdateDto movieDto)
         {
@@ -61,7 +59,6 @@ namespace CinemaApp.API.Controllers
         }
 
         [HttpPatch("{id}")]
-        [CinemaApiExceptionFilter]
         [Authorize(Roles = "admin")]
         public IActionResult PartialUpdate(int id, [FromBody] MoviePartialUpdateDto movieDto)
         {
@@ -87,7 +84,6 @@ namespace CinemaApp.API.Controllers
 
         [HttpPost("add-in-waiting-list")]
         [Authorize]
-        [CinemaApiExceptionFilter]
         public IActionResult AddInWaitingList([FromBody] MovieInWaitingListDto movieInList)
         {
             _movieService.AddMovieInWaitingList(movieInList.UserId, movieInList.MovieId);
@@ -96,15 +92,14 @@ namespace CinemaApp.API.Controllers
 
         [HttpGet("get-waiting-list/{userId}")]
         [Authorize]
-        [CinemaApiExceptionFilter]
         public IActionResult GetWaitingList(int userId)
         {
             var movieReadDtos = _movieService.GetMoviesInWaitingList(userId);
             return Ok(movieReadDtos);
         }
+        
         [HttpPost("set-movie-rating")]
         [Authorize]
-        [CinemaApiExceptionFilter]
         public IActionResult SetMovieRating([FromBody] MovieRatingDto movieRatingDto)
         {
             _movieService.SetMovieRating(movieRatingDto);

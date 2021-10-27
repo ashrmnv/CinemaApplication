@@ -1,5 +1,5 @@
-﻿
-using CinemaApp.Common.Dtos.DirectorDtos;
+﻿using CinemaApp.Common.Dtos.DirectorDtos;
+using CinemaApp.Common.Dtos.PosterDtos;
 using System;
 
 namespace CinemaApp.Common.Dtos.MovieDtos
@@ -10,8 +10,8 @@ namespace CinemaApp.Common.Dtos.MovieDtos
         public string Title { get; set; }
         public string Genre { get; set; }
         public DateTime PremiereDate { get; set; }
-        public double Rating { get; set; }
         public DirectorReadDto DirectorReadDto { get; set; }
+        public PosterReadDto PosterReadDto { get; set; }
 
     }
 }

@@ -9,9 +9,10 @@ namespace CinemaApp.BLL.Profiles
     {
         public CommentProfile()
         {
-            CreateMap<Comment, CommentReadDto>();
+            CreateMap<Comment, CommentReadDto>()
+                .ForMember(x => x.UserDto, y => y.MapFrom(z => z.User));
             CreateMap<CommentCreateDto, Comment>();
-            CreateMap<CommentUpdateDto, CommentReadDto>();
+            CreateMap<CommentUpdateDto, Comment>();
             CreateMap<PaginatedResult<Comment>, PaginatedResult<CommentReadDto>>();
 
         }

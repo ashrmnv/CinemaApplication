@@ -13,5 +13,8 @@ namespace CinemaApp.Common.Dtos.CommentDtos
         public string Body { get; set; }
         [Required]
         public DateTime CreatingDate { get; set; }
+        [Required]
+        public int UserId { get; set; }
+
     }
 }

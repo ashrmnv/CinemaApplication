@@ -28,7 +28,6 @@ namespace CinemaApp.API.Controllers
         }
 
         [HttpPost]
-        [CinemaApiExceptionFilter]
         [Authorize]
         public IActionResult BuyTicket([FromBody] TicketCreateDto ticketDto)
         {

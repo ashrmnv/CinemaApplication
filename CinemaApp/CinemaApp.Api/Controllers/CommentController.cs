@@ -38,11 +38,10 @@ namespace CinemaApp.API.Controllers
         }
 
         [HttpPut("{commentId}")]
-        [CinemaApiExceptionFilter]
-        [Authorize]
-        public IActionResult UpdateComment(int id, [FromBody] CommentUpdateDto commentDto)
+        //[Authorize]
+        public IActionResult UpdateComment(int commentId, [FromBody] CommentUpdateDto commentDto)
         {
-            var commentReadDto = _commentService.UpdateComment(id, commentDto);
+            var commentReadDto = _commentService.UpdateComment(commentId, commentDto);
             return Ok(commentReadDto);
         }
 

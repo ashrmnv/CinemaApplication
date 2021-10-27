@@ -33,7 +33,7 @@ namespace CinemaApp.API.Controllers
             {
                 accessToken = jwt,
                 id = user.Id,
-                login = user.Login
+                role= user.Role
             };
             return Ok(response);
         }
@@ -52,60 +52,10 @@ namespace CinemaApp.API.Controllers
             {
                 accessToken = jwt,
                 id = user.Id,
-                login = user.Login
+                role = user.Role
             };
 
-
             return Ok(response);
-        }
-
-        //[HttpGet("user")]
-        //public IActionResult GetUser()
-        //{
-        //    try
-        //    {
-        //        var jwt = Request.Cookies["jwt"];
-
-        //        var token = _jwtService.Verify(jwt);
-
-        //        int userId = int.Parse(token.Issuer);
-
-        //        var userDto = _userService.GetById(userId);
-
-        //        return Ok(userDto);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return Unauthorized();
-        //    }
-        //}
-
-        //[HttpPost("logout")]
-        //public IActionResult Logout()
-        //{
-        //    Response.Cookies.Delete("jwt");
-        //    return Ok(new
-        //    {
-        //        message = "Success"
-        //    });
-        //}
-        [HttpPost("testAuth")]
-        [Authorize(Roles = "user")]
-        public IActionResult Test1()
-        {
-            return Ok(new
-            {
-                message = "YOU ARE USER OF API"
-            });
-        }
-        [HttpPost("testAuthAdmin")]
-        [Authorize(Roles = "admin")]
-        public IActionResult Test2()
-        {
-            return Ok(new
-            {
-                message = "YOU ARE ADMIN OF API"
-            });
         }
     }
 }

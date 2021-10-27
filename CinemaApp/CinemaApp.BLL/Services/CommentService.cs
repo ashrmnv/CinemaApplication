@@ -51,10 +51,6 @@ namespace CinemaApp.BLL.Services
         {
             var commentsList = _repository.GetPagedDataWithInclude(pagedRequest, x => x.User);
             var commentListDtos = _mapper.Map<PaginatedResult<CommentReadDto>>(commentsList);
-            for (int i = 0; i < commentListDtos.Items.Count; i++)
-            {
-                commentListDtos.Items[i].UserDto = _mapper.Map<UserDto>(commentsList.Items[i].User);
-            }
             return commentListDtos;
         }
 

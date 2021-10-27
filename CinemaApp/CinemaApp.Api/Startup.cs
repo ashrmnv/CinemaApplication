@@ -1,5 +1,6 @@
 using AutoMapper;
 using CinemaApp.API.Infrastructure;
+using CinemaApp.BLL.Exceptions;
 using CinemaApp.BLL.Interfaces;
 using CinemaApp.BLL.Profiles;
 using CinemaApp.BLL.Services;
@@ -65,7 +66,10 @@ namespace CinemaApp.Api
 
             services.AddDbContext<CinemaAppContext>
                 (opt => opt.UseSqlServer(Configuration.GetConnectionString("CinemaConnection")));
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.Filters.Add(new CinemaApiExceptionFilter());
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CinemaApp.Api", Version = "v1" });

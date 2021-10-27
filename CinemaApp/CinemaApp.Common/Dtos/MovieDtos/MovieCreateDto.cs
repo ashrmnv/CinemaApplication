@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CinemaApp.Common.Dtos.DirectorDtos;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -19,7 +20,6 @@ namespace CinemaApp.Common.Dtos.MovieDtos
         [Required]
         public DateTime PremiereDate { get; set; }
         [Required]
-        [Range(1,999)]
         public int DirectorId { get; set; }
     }
 }

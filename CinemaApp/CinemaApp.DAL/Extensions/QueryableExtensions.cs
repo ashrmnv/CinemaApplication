@@ -18,9 +18,9 @@ namespace CinemaApp.DAL.Extensions
 
             var total = query.Count();
 
-            query = query.Paginate(pagedRequest);
+	        query = query.Sort(pagedRequest);
 
-            var projectionResult = query.Sort(pagedRequest);
+            var projectionResult = query.Paginate(pagedRequest);
 
             var listResult = projectionResult.ToList();
 
