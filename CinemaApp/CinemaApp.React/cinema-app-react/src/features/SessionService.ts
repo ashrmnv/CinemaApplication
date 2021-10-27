@@ -1,4 +1,4 @@
-import {sessionReadDto} from "../entities/sessions/sessionReadDto";
+import {sessionReadDto} from "../entities/sessions/model/sessionReadDto";
 import {PagedRequest} from "../shared/RequestFilters/PagedRequest";
 import {PaginatedResult} from "../shared/RequestFilters/PaginatedResult";
 

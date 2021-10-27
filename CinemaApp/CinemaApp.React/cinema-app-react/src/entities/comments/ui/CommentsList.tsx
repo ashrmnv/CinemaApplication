@@ -1,10 +1,9 @@
 import React, {FC, useEffect, useState} from 'react';
-import CommentItem from "./ui/CommentItem";
-import CommentForm from "./ui/CommentForm";
-import {CommentReadDto} from "../../../entities/comments/comment";
-import {getComments} from "./model/getComments";
+import CommentItem from "./CommentItem";
+import CommentForm from "./CommentForm";
+import {CommentReadDto} from "../model/comment";
+import {getComments} from "../model/getComments";
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 
 interface CommentsProps{
     movieId : number

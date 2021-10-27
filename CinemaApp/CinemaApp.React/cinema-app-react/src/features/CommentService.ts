@@ -1,8 +1,8 @@
 import {PagedRequest} from "../shared/RequestFilters/PagedRequest";
 import {PaginatedResult} from "../shared/RequestFilters/PaginatedResult";
-import {CommentUpdateDto} from "../entities/comments/commentUpdateDto";
-import {CommentReadDto} from "../entities/comments/comment";
-import {CommentCreate} from "../entities/comments/commentCreate";
+import {CommentUpdateDto} from "../entities/comments/model/commentUpdateDto";
+import {CommentReadDto} from "../entities/comments/model/comment";
+import {CommentCreate} from "../entities/comments/model/commentCreate";
 
 
 const BASE_URL : string = "https://localhost:5001/api/";

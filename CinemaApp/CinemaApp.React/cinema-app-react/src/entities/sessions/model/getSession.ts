@@ -1,4 +1,4 @@
-import {showPaginatedSessions} from "../../../../features/SessionService";
+import {showPaginatedSessions} from "../../../features/SessionService";
 
 export const getSessions = async (setSessions, setValue, movieId) => {
     const responsePagedData = await showPaginatedSessions({

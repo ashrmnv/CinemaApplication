@@ -25,7 +25,7 @@ const Navbar : FC = () : JSX.Element => {
                         <HomeIcon fontSize="large"/>
                     </Link>
                     <Typography variant="h5" component="div" sx={{ flexGrow: 1, mt : 1 }}>
-                        
+
                     </Typography>
                     {
                         isAuth
@@ -35,8 +35,8 @@ const Navbar : FC = () : JSX.Element => {
                             <LoginIcon/>
                     }
                 </Toolbar>
-        <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-      </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                </Box>
             </AppBar>
         </Box>
     );

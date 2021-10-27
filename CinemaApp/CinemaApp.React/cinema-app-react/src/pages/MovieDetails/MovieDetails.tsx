@@ -4,14 +4,14 @@ import { MovieDetails } from '../../entities/movies/models/movieDetails';
 import {AuthContext} from '../../app/App';
 import ActorItem from './MovieInfo/ui/ActorItem';
 import Grid from '@mui/material/Grid';
-import Divider from '@mui/material/Divider';
+import Divider from "@mui/material/Divider";
 import CircularProgress from  "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import MovieRating from "./MovieInfo/ui/MovieRating";
 import AddInWaitingIcon from "./MovieInfo/ui/AddInWaitingIcon";
 import {getMovie} from "./MovieInfo/model/getMovie";
-import CommentsList from "./Comments/CommentsList";
-import SessionsList from "./Sessions/SessionsList";
+import CommentsList from "../../entities/comments/ui/CommentsList";
+import SessionsList from "../../entities/sessions/ui/SessionsList";
 import MovieInfo from "./MovieInfo/MovieInfo";
 
 const MovieDetailsPage: FC = () : JSX.Element => {

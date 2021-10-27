@@ -1,7 +1,7 @@
 import {PagedRequest} from "../shared/RequestFilters/PagedRequest";
 import {PaginatedResult} from "../shared/RequestFilters/PaginatedResult";
 
-import {CommentReadDto} from "../entities/comments/comment";
+import {CommentReadDto} from "../entities/comments/model/comment";
 import {useContext} from "react";
 import {AuthContext} from "../app/App";
 

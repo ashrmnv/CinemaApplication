@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import { getSessions } from '../../MovieDetails/Sessions/model/getSession';
+import { getSessions } from '../../../entities/sessions/model/getSession';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';

@@ -1,10 +1,9 @@
 import React,{FC, useState} from 'react';
-import {CommentReadDto} from '../../../../entities/comments/comment';
-import {CommentUpdateDto} from '../../../../entities/comments/commentUpdateDto';
-import {deleteComment} from '../../../../features/CommentService';
-import {updateComment} from '../../../../features/CommentService';
+import {CommentReadDto} from '../model/comment';
+import {CommentUpdateDto} from '../model/commentUpdateDto';
+import {deleteComment} from '../../../features/CommentService';
+import {updateComment} from '../../../features/CommentService';
 import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -20,7 +19,7 @@ interface CommentProps{
     setAddNewComment : React.Dispatch<React.SetStateAction<number>>;
 }
 const CommentItem: FC<CommentProps> = ({comment, setAddNewComment}) : JSX.Element => {
-    
+
     const userIdCheck = localStorage.getItem('id');
     const userId = parseInt(userIdCheck !== null ? userIdCheck : "-1");
     const roleCheck = localStorage.getItem('role');
@@ -46,30 +45,27 @@ const CommentItem: FC<CommentProps> = ({comment, setAddNewComment}) : JSX.Elemen
             creatingDate : date,
             userId : userId
         }
-
         const tokenCheck = localStorage.getItem('token');
         const token = tokenCheck ? tokenCheck : " ";
-        console.log(updatedComment);
         const response = await updateComment(updatedComment, comment.id, token);
         setIsUpdating(false);
         setAddNewComment(-1);
 
     }
-    console.log(comment.id);
 
     const creatingDate = new Date(comment.creatingDate);
     return(
-            <Card sx={{ width: '100%', margin : "2% 0" }}>
-                <CardContent>
-                    <Typography variant="body2" component="div" color="text.secondary">
-                        {comment.userDto.login} {creatingDate.toLocaleDateString("en-US")} {creatingDate.toLocaleTimeString("it-IT")}
-                    </Typography>
-                    {
-                        isUpdating
+        <Card sx={{ width: '100%', margin : "2% 0" }}>
+            <CardContent>
+                <Typography variant="body2" component="div" color="text.secondary">
+                    {comment.userDto.login} {creatingDate.toLocaleDateString("en-US")} {creatingDate.toLocaleTimeString("it-IT")}
+                </Typography>
+                {
+                    isUpdating
                         ?
                         <form onSubmit={handleSubmit(updateAction)}>
                             <TextField
-                                {...register("body")} 
+                                {...register("body")}
                                 maxRows={4}
                                 value={newValue}
                                 onChange={(e) => setNewValue(e.target.value)}
@@ -81,25 +77,25 @@ const CommentItem: FC<CommentProps> = ({comment, setAddNewComment}) : JSX.Elemen
                         <Typography variant="h5" >
                             {comment.body}
                         </Typography>
-                    }
-                </CardContent>
-                <CardActions sx={{display : "flex", justifyContent : "flex-end"}}>
-                    {
-                        !isUpdating && userId === comment.userDto.id
+                }
+            </CardContent>
+            <CardActions sx={{display : "flex", justifyContent : "flex-end"}}>
+                {
+                    !isUpdating && userId === comment.userDto.id
                         ?
-                            <Button size="small" type = "button" onClick={() => setIsUpdating(true)}>Update</Button>
+                        <Button size="small" type = "button" onClick={() => setIsUpdating(true)}>Update</Button>
                         :
-                            <div></div>
-                    }
-                    {
-                        userId === comment.userDto.id || userRole === "admin"
+                        <div></div>
+                }
+                {
+                    userId === comment.userDto.id || userRole === "admin"
                         ?
                         <Button size="small" onClick={deleteAction}>Delete</Button>
                         :
                         <div></div>
-                    }
-                </CardActions>
-                </Card>
+                }
+            </CardActions>
+        </Card>
     );
 }
 

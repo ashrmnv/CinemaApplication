@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import {useState} from 'react';
 import {Popover, Rating} from "@mui/material";
 import Typography from "@mui/material/Typography";
+
 interface RatingProps{
     rating : number;
 }

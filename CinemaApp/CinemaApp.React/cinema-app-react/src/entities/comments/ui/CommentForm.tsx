@@ -4,9 +4,9 @@ import * as yup from "yup";
 import Button from "@mui/material/Button";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {CommentCreate} from "../../../../entities/comments/commentCreate";
-import {addNewComment} from "../../../../features/CommentService";
-import {AuthContext} from "../../../../app/App";
+import {CommentCreate} from "../model/commentCreate";
+import {addNewComment} from "../../../features/CommentService";
+import {AuthContext} from "../../../app/App";
 
 interface CommentFormProps{
     movieId : number;
@@ -15,7 +15,7 @@ interface CommentFormProps{
 const CommentForm : FC<CommentFormProps> = ({movieId, setAddNewComment}) : JSX.Element => {
     const {isAuth, token} = useContext(AuthContext);
     const [value, setValue] = useState<string>("");
-    
+
     const schema = yup.object().shape({
         body : yup.string().max(1000).required()
     })
@@ -43,7 +43,7 @@ const CommentForm : FC<CommentFormProps> = ({movieId, setAddNewComment}) : JSX.E
     return (
         <form onSubmit={handleSubmit(onSubmitHandler)}>
             <TextField
-                {...register("body")} 
+                {...register("body")}
                 id="outlined-multiline-flexible"
                 label="Add Comment"
                 multiline

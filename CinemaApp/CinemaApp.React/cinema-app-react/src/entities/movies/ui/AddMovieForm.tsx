@@ -1,7 +1,6 @@
 import React from 'react';
 import {TextField} from "@mui/material";
 import {useForm} from 'react-hook-form';
-import MovieListHeader from "../../../pages/CinemaPlaybill/MovieList/ui/MovieListHeader";
 import { Movie } from '../models/movie';
 
 const AddMovieForm = () => {

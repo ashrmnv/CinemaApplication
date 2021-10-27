@@ -1,4 +1,4 @@
-import {showPaginatedComments} from "../../../../features/CommentService";
+import {showPaginatedComments} from "../../../features/CommentService";
 
 export const getComments = async (setComments, movieId) => {
     const responsePagedData = await showPaginatedComments({
